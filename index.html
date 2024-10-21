@@ -1,102 +1,27 @@
-<div class="select">
-<button id="1"></button><button id="2"></button><button id="3"></button><button id="4"></button><button id="5"></button><button id="6"></button><button id="7"></button><button id="8"></button><button id="9"></button>
-</div>
-<style>
-.select{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-
-.select > button {
-    width: 100px; /* Cambiado a 100px para mayor visibilidad */
-    height: 100px;     
-}   
-
-</style>
-<script>
-const GameBoard = (function() {
-  const board = ["", "", "", "", "", "", "", "", ""];
-
-  return {
-    getBoard: function() {
-      return board;
-    },
-    updateBoard: function(index, symbol) {
-      if (board[index] === "") {
-        board[index] = symbol;
-      }
-    }
-  };
-})();
-function getBoard(){
-    return GameBoard.getBoard();
-}
- 
- function Player (name, symbol){
-     this.name = name;
-     this.symbol = symbol;
- }
-
- function getPlayer(index){
-    const player1 = new Player("Pedro", "X");
-    const player2 =  new Player("Juan", "O");
-    const players = [player1, player2];
-    return players[index];
- }
-   
-
-function getTurn(){
-     
-    return turn(getPlayer(0), getPlayer(1), 1);
-}
-function getLastTurn(){
-    return turn(getPlayer(0), getPlayer(1), 2);
-   
-}
-function modifyBoard(index){
-    const player = getTurn();
-    const symbol = player.symbol;
-    GameBoard.updateBoard(index,symbol);
-}
-function checkResult(){
-    const board = getBoard();
-   
-   
-    if ((board[0] === board[1] && board[1] === board[2] && board[0] !== "") ||
-    (board[3] === board[4] && board[4] === board[5] && board[3] !== "") ||
-    (board[6] === board[7] && board[7] === board[8] && board[6] !== "") ||
-    (board[0] === board[3] && board[3] === board[6] && board[0] !== "") ||
-    (board[1] === board[4] && board[4] === board[7] && board[1] !== "") ||
-    (board[2] === board[5] && board[5] === board[8] && board[2] !== "") ||
-    (board[0] === board[4] && board[4] === board[8] && board[0] !== "") ||
-    (board[2] === board[4] && board[4] === board[6] && board[2] !== "")) {
-        getLastTurn();
-    }
-
-}
-
-function turn (player1, player2, state){
-    let getBoard = GameBoard.getBoard();
-    const contador1 = getBoard.filter(gameBoard => gameBoard === player1.symbol).length;
-    const contador2 = getBoard.filter(gameBoard => gameBoard === player2.symbol).length;
-    console.log(contador1);
-    console.log(contador2);
-    if(contador1 == contador2 && state ==1){
-        return player1;
-    }else if(contador1 > contador2 && state ==1){
-        return player2;
-    }
-    else if(contador1 == contador2 && state ==2){
-        return player2;
-    }else if(contador1 > contador2 && state ==2){
-        return player1;
-    }else{
-        return player1; 
-    }
-
-}
-
-
-
-</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <title>Tik Tack Toe</title>
+</head>
+<body>
+    <div class="mainGrid">
+        <div class="select">
+            <button onClick="modifyBoard(0)" id="0"></button><button onClick="modifyBoard(1)" id="1"></button><button
+                onClick="modifyBoard(2)" id="2"></button><button onClick="modifyBoard(3)" id="3"></button><button
+                onClick="modifyBoard(4)" id="4"></button><button onClick="modifyBoard(5)" id="5"></button><button
+                onClick="modifyBoard(6)" id="6"></button><button onClick="modifyBoard(7)" id="7"></button><button
+                onClick="modifyBoard(8)" id="8"></button>
+            <div id="resultContainer">
+                <div id="result"></div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+<script src="scripts.js"></script>
+</html>

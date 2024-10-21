@@ -1,0 +1,43 @@
+.select {
+  display: grid;
+  grid-template-columns: 200px 200px 200px;
+}
+.mainGrid {
+  display: flex;
+  height: 100%;
+}
+.mainGrid > div {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+html,
+body {
+  background-color: black;
+  font-family: "Montserrat", sans-serif;
+}
+
+.select > button {
+  width: 200px; /* Cambiado a 100px para mayor visibilidad */
+  height: 200px;
+  border: 1px solid white;
+  background-color: black;
+  color: white;
+  font-size: 80px;
+}
+#resultContainer {
+  display: grid;
+  justify-content: center;
+  color: white;
+  padding-top: 20px;
+  font-size: 40px;
+  width: 100%;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  height: 60px;
+}
+#resultContainer > div {
+  margin-left: auto;
+  margin-right: auto;
+}
